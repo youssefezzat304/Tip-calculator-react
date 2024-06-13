@@ -1,14 +1,37 @@
-*, *::after, *::before {
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+*,
+*::after,
+*::before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 :root {
-  Strong cyan: hsl(172, 67%, 45%)
-  Very dark cyan: hsl(183, 100%, 15%)
-  Dark grayish cyan: hsl(186, 14%, 43%)
-  Grayish cyan: hsl(184, 14%, 56%)
-  Light grayish cyan: hsl(185, 41%, 84%)
-  Very light grayish cyan: hsl(189, 41%, 97%)
-  White: hsl(0, 0%, 100%)
+  --brand: 172, 67%, 45%;
+  --text: 183, 100%, 15%;
+  --neutral1: 186, 14%, 43%;
+  --neutral2: 184, 14%, 56%;
+  --neutral3: 185, 41%, 84%;
+  --neutral4: 189, 41%, 97%;
+  --white: 179, 41%, 99%;
+}
+body {
+  font-family: "Space Mono", monospace;
+  font-size: 1.5rem;
+  background-color: hsl(var(--neutral3));
+}
+.app {
+  display: grid;
+  gap: 3rem;
+  place-items: center;
+}
+.container{
+  padding: clamp(2rem,5vw,4rem);
+  background-color: hsl(var(--white));
+  border-radius: 2rem;
+  box-shadow: 0 1rem 5rem hsl(var(--neutral2) / .5);
+  display: grid;
+  grid-auto-flow: column;
+  gap: clamp(2rem,5vw,4rem);
 }
