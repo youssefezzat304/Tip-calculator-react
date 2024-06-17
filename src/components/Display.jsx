@@ -1,31 +1,41 @@
+const Display = ({ tipAmount, totalPerPerson, handleResetBtn }) => {
+  const displayInfo = (amt) =>
+    new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "USD",
+    }).format(amt);
 
-
-const Display = () => {
   return (
     <div>
       <div className="display">
-
         <div className="display-grp">
           <div className="display-row">
             <div className="display-label">
               <p className="header">Tip-amount</p>
               <p className="unit">/ person</p>
             </div>
-            <p className="display-amt">$0.00</p>
+            <p className="display-amt">{displayInfo(tipAmount)}</p>
           </div>
           <div className="display-row">
             <div className="display-label">
               <p className="header">Total</p>
               <p className="unit">/ person</p>
             </div>
-            <p className="display-amt">$0.00</p>
+            <p className="display-amt">{displayInfo(totalPerPerson)}</p>
           </div>
         </div>
-
-        <button className="btn" disabled >RESET</button>
+        {totalPerPerson ? (
+          <button className="btn" onClick={handleResetBtn}>
+            RESET
+          </button>
+        ) : (
+          <button className="btn" disabled>
+            RESET
+          </button>
+        )}
       </div>
     </div>
   );
-}
+};
 
-export default Display
+export default Display;

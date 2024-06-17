@@ -56,7 +56,7 @@ body {
 }
 .icon {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 0.5rem;
   transform: translateY(-50%);
   pointer-events: none;
@@ -85,19 +85,20 @@ body {
   gap: 0.5rem;
 }
 .tip-amount {
+  display: grid;
   position: relative;
 }
-[name="tip"] {
+.tip-input {
   opacity: 0;
   position: absolute;
   inset: 0;
   cursor: pointer;
 }
-[name="tip"]:hover + .tip-btn {
+.tip-input:hover + .tip-btn {
   background-color: hsl(var(--neutral3));
   color: hsl(var(--text));
 }
-[name="tip"]:checked + .tip-btn {
+.tip-input:checked + .tip-btn {
   background-color: hsl(var(--brand));
   color: hsl(var(--text));
 }
@@ -208,4 +209,10 @@ body {
     min-height: 580px;
     grid-auto-flow: column;
   }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

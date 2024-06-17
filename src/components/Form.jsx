@@ -2,13 +2,18 @@ import dollarIcon from "../assets/images/icon-dollar.svg";
 import personIcon from "../assets/images/icon-person.svg";
 
 const Form = ({
-  handleBillAmtInput,
-  handleSelectedTip,
-  handleNumPeopleInput,
-  billAmt,
-  billAmtError,
-  numPeople,
+  bill,
+  setBill,
+  people,
+  setPeople,
+  tip,
+  setTip
 }) => {
+
+  const handleSelectedTip = (e) => {
+    setTip(+e.target.value)
+  }
+
   return (
     <div className="form">
       <div className="label-group">
@@ -16,16 +21,15 @@ const Form = ({
           <label className="label" htmlFor="bill">
             Bill
           </label>
-          <p className="error">{billAmtError && "Please enter a number."}</p>
         </div>
         <div className="input-wrapper">
           <input
-            type="text"
+            type="number"
             className="number-input"
             id="bill"
-            onInput={handleBillAmtInput}
-            value={billAmt}
+            onInput={(e) => setBill(+e.target.value)}
             placeholder="0"
+            value={bill}
           />
           <img src={dollarIcon} aria-label="true" className="icon" />
         </div>
@@ -36,54 +40,61 @@ const Form = ({
         <div className="tip-amount-wrapper">
           <div className="tip-amount">
             <input
+              className="tip-input"
               type="radio"
-              onChange={handleSelectedTip}
+              onInput={handleSelectedTip}
               name="tip"
-              value="0.05"
+              value="5"
             />
-            <div className="tip-btn">5%</div>
+            <label className="tip-btn">5%</label>
           </div>
           <div className="tip-amount">
             <input
+              className="tip-input"
               type="radio"
-              onChange={handleSelectedTip}
+              onInput={handleSelectedTip}
               name="tip"
-              value="0.1"
+              value="10"
             />
-            <div className="tip-btn">10%</div>
+            <label className="tip-btn">10%</label>
           </div>
           <div className="tip-amount">
             <input
+              className="tip-input"
               type="radio"
-              onChange={handleSelectedTip}
+              onInput={handleSelectedTip}
               name="tip"
-              value="0.15"
+              value="15"
             />
-            <div className="tip-btn">15%</div>
+            <label className="tip-btn">15%</label>
           </div>
           <div className="tip-amount">
             <input
+              className="tip-input"
               type="radio"
-              onChange={handleSelectedTip}
+              onInput={handleSelectedTip}
               name="tip"
-              value="0.25"
+              value="25"
             />
-            <div className="tip-btn">25%</div>
+            <label className="tip-btn">25%</label>
           </div>
-          <div className="tip-amount">
+          <div className="tip-amount ">
             <input
+              className="tip-input"
               type="radio"
-              onChange={handleSelectedTip}
+              onInput={handleSelectedTip}
               name="tip"
-              value="0.5"
+              value="50"
             />
-            <div className="tip-btn">50%</div>
+            <label className="tip-btn">50%</label>
           </div>
 
           <input
-            type="text"
+            type="number"
             className="tip-custom number-input"
             placeholder="Custom"
+            name="tip"
+            onInput={handleSelectedTip}
           />
         </div>
       </div>
@@ -93,7 +104,7 @@ const Form = ({
           <label className="label" htmlFor="num-pepople">
             Number of people
           </label>
-          <p className="error">{billAmtError && "Please enter a number."}</p>
+          <p className="error">{people === 0? "Can't be zero." : ""}</p>
         </div>
         <div className="input-wrapper">
           <input
@@ -101,8 +112,8 @@ const Form = ({
             className="number-input"
             id="people"
             placeholder="0"
-            onInput={handleNumPeopleInput}
-            value={numPeople}
+            onInput={(e) => setPeople(+e.target.value)}
+            value={people}
           />
           <img src={personIcon} aria-label="true" className="icon" />
         </div>
